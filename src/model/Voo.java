@@ -1,9 +1,9 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
+import java.sql.Timestamp;
+
 
 public class Voo implements Serializable {
 
@@ -12,20 +12,20 @@ public class Voo implements Serializable {
     private Integer idVoo;
     private String origem;
     private String destino;
-    private String dataHoraPartida;
-    private String dataHoraChegada;
+    private Timestamp dataHoraPartida;
+    private Timestamp dataHoraChegada;
     private String status;
-    private Aeronave idAeronave;
+    private Aeronave aeronave;
 
 
-    public Voo(Integer idVoo, String origem, String destino, String dataHoraPartida, String dataHoraChegada, String status,Aeronave idAeronave) {
+    public Voo(Integer idVoo,String origem, String destino, Timestamp dataHoraPartida, Timestamp dataHoraChegada, String status, Aeronave aeronave) {
         this.idVoo = idVoo;
         this.origem = origem;
         this.destino = destino;
         this.dataHoraPartida = dataHoraPartida;
         this.dataHoraChegada = dataHoraChegada;
         this.status = status;
-        this.idAeronave = idAeronave;
+        this.aeronave = aeronave;
     }
 
     public Voo(){}
@@ -54,19 +54,19 @@ public class Voo implements Serializable {
         this.destino = destino;
     }
 
-    public String getDataHoraPartida() {
+    public Timestamp getDataHoraPartida() {
         return dataHoraPartida;
     }
 
-    public void setDataHoraPartida(String dataHoraPartida) {
+    public void setDataHoraPartida(Timestamp dataHoraPartida) {
         this.dataHoraPartida = dataHoraPartida;
     }
 
-    public String getDataHoraChegada() {
+    public Timestamp getDataHoraChegada() {
         return dataHoraChegada;
     }
 
-    public void setDataHoraChegada(String dataHoraChegada) {
+    public void setDataHoraChegada(Timestamp dataHoraChegada) {
         this.dataHoraChegada = dataHoraChegada;
     }
 
@@ -78,12 +78,12 @@ public class Voo implements Serializable {
         this.status = status;
     }
 
-    public Aeronave getIdAeronave() {
-        return idAeronave;
+    public Aeronave getAeronave() {
+        return aeronave;
     }
 
-    public void setIdAeronave(Aeronave idAeronave) {
-        this.idAeronave = idAeronave;
+    public void setAeronave(Aeronave aeronave) {
+        this.aeronave = aeronave;
     }
 
     @Override
@@ -108,7 +108,7 @@ public class Voo implements Serializable {
                 ", dataHoraPartida=" + dataHoraPartida +
                 ", dataHoraChegada=" + dataHoraChegada +
                 ", status='" + status + '\'' +
-                ", idAeronave=" + idAeronave +
+                ", idAeronave=" + aeronave.getIdAeronave() +
                 '}';
     }
 }

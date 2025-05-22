@@ -15,7 +15,7 @@ public class AeronaveController {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public void AeronaveInserir(Aeronave aeronave){
+    public void create(Aeronave aeronave){
         try{
             conn = DB.getConnection();
             conn.setAutoCommit(false);
@@ -47,7 +47,7 @@ public class AeronaveController {
     }
 
 
-    public List<Aeronave> ler(){
+    public List<Aeronave> read(){
         List<Aeronave> lista = new ArrayList<>();
         try{
             conn = DB.getConnection();
@@ -72,7 +72,7 @@ public class AeronaveController {
 
 
 
-    public void atualizar(Aeronave aeronave){
+    public void update(Aeronave aeronave){
         try{
             conn = DB.getConnection();
             ps = conn.prepareStatement("UPDATE Aeronave " +
@@ -94,7 +94,7 @@ public class AeronaveController {
     }
 
 
-    public void deletar(Aeronave aeronave){
+    public void delete(Aeronave aeronave){
         try{
             conn = DB.getConnection();
             ps = conn.prepareStatement("DELETE FROM Aeronave WHERE IdAeronave = ?");
