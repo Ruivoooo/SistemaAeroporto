@@ -50,4 +50,14 @@ public class CheckIn {
     public void setPassagem(Passagem passagem) {
         this.passagem = passagem;
     }
+
+    @Override
+    public String toString() {
+        return "CheckIn{" +
+                "idCheckIn=" + idCheckIn +
+                ", qtdBagagensDesp=" + qtdBagagensDesp +
+                ", dataHora=" + dataHora +
+                ", passagem=" + passagem.getIdPassagem() +
+                '}';
+    }
 }

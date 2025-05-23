@@ -1,13 +1,7 @@
 package Application;
 
-import controller.AeronaveController;
-import controller.PassageiroController;
-import controller.PassagemController;
-import controller.VooController;
-import model.Aeronave;
-import model.Passageiro;
-import model.Passagem;
-import model.Voo;
+import controller.*;
+import model.*;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -31,6 +25,8 @@ public class Program{
         Voo voo = new Voo(1,"Santa catarina","São Paulo",partida,chegada,"Finalizado",aeronave);
         vooController.create(voo);
              */
+
+        /*
         Voo voo = new Voo();
         voo.setIdVoo(2);
         Passageiro passageiro = new Passageiro();
@@ -41,7 +37,31 @@ public class Program{
 
         passagemController.delete(passagem);
 
+         */
 
+
+        /*
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date dataCheckIn  = sdf.parse("25/12/2025 09:00");
+        Timestamp partida = new Timestamp(dataCheckIn.getTime());
+
+        Passagem passagem = new Passagem();
+        passagem.setIdPassagem(1);
+
+        CheckIn checkIn = new CheckIn(1,10,partida,passagem);
+        CheckInController checkInController = new CheckInController();
+
+        checkInController.delete(checkIn);
+
+         */
+
+        CheckIn checkIn = new CheckIn();
+        checkIn.setIdCheckIn(2);
+
+       Bagagem bagagem = new Bagagem(1,6.0,"Formiga","Aguardando voo",checkIn);
+       BagagemController bagagemController = new BagagemController();
+
+        System.out.println(bagagemController.read());
 
 
 
