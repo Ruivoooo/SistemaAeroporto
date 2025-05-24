@@ -56,6 +56,33 @@ public class BagagemController {
     }
 
 
+    public void update(Bagagem bagagem) {
+        try {
+            conn = DB.getConnection();
+            ps = conn.prepareStatement("UPDATE Bagagem SET PesoKg = ?,DestinoFinal = ?,Status = ?,IdCheckIn = ? WHERE IdBagagem = ?");
+            ps.setDouble(1, bagagem.getPesoKg());
+            ps.setString(2, bagagem.getDestinoFinal());
+            ps.setString(3, bagagem.getStatus());
+            ps.setInt(4, bagagem.getCheckIn().getIdCheckIn());
+            ps.setInt(5, bagagem.getIdBagagem());
+            ps.executeUpdate();
 
+        }catch (SQLException e){
+            throw new DbException("Exceção : " + e);
+        }
+    }
 
+    public void delete(Bagagem bagagem) {
+        try {
+            conn = DB.getConnection();
+            ps = conn.prepareStatement("DELETE FROM Bagagem WHERE IdBagagem = ?");
+            ps.setInt(1, bagagem.getIdBagagem());
+            ps.executeUpdate();
+
+        }catch(SQLException e){
+            throw new DbException("Exceção : " + e);
+
+        }
+    }
 }
+

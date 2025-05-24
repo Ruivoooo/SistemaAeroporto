@@ -58,10 +58,10 @@ public class Program{
         CheckIn checkIn = new CheckIn();
         checkIn.setIdCheckIn(2);
 
-       Bagagem bagagem = new Bagagem(1,6.0,"Formiga","Aguardando voo",checkIn);
+       Bagagem bagagem = new Bagagem(1,8.0,"Formiga","Aguardando voo",checkIn);
        BagagemController bagagemController = new BagagemController();
 
-        System.out.println(bagagemController.read());
+        bagagemController.delete(bagagem);
 
 
 
