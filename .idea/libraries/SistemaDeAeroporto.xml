@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SistemaDeAeroporto">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/SistemaDeAeroporto.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
