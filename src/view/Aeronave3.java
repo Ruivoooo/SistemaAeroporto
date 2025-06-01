@@ -5,6 +5,7 @@
 package view;
 import model.Aeronave;
 import controller.AeronaveController;
+import java.awt.Dimension;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -39,6 +40,8 @@ public class Aeronave3 extends javax.swing.JFrame {
     public Aeronave3() {
         initComponents();
         listar();
+        Id.setVisible(false);
+        Id.setPreferredSize(new Dimension(0,0));
     }
 
     /**
@@ -62,7 +65,10 @@ public class Aeronave3 extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         Fabricante = new javax.swing.JTextPane();
         Salvar = new javax.swing.JButton();
-        Editar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Id = new javax.swing.JTextPane();
+        Editar1 = new javax.swing.JButton();
+        Excluir = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         ConsultarAeronave = new javax.swing.JTable();
@@ -94,10 +100,19 @@ public class Aeronave3 extends javax.swing.JFrame {
             }
         });
 
-        Editar.setText("Editar");
-        Editar.addActionListener(new java.awt.event.ActionListener() {
+        jScrollPane2.setViewportView(Id);
+
+        Editar1.setText("Editar");
+        Editar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditarActionPerformed(evt);
+                Editar1ActionPerformed(evt);
+            }
+        });
+
+        Excluir.setText("Excluir");
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
             }
         });
 
@@ -115,40 +130,49 @@ public class Aeronave3 extends javax.swing.JFrame {
                                 .addGap(17, 17, 17)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
+                                .addGap(9, 9, 9)
                                 .addComponent(Salvar)
-                                .addGap(18, 18, 18)
-                                .addComponent(Editar))
-                            .addComponent(jLabel3))
-                        .addContainerGap(658, Short.MAX_VALUE))
+                                .addGap(29, 29, 29)
+                                .addComponent(Editar1)
+                                .addGap(26, 26, 26)
+                                .addComponent(Excluir))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(31, 31, 31)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(635, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Editar)
-                    .addComponent(Salvar))
-                .addContainerGap(246, Short.MAX_VALUE))
+                    .addComponent(Salvar)
+                    .addComponent(Editar1)
+                    .addComponent(Excluir))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dados Aeronave", jPanel1);
@@ -227,18 +251,59 @@ public class Aeronave3 extends javax.swing.JFrame {
         listar();
 
         JOptionPane.showMessageDialog(null,"Aeronave cadastrada com sucesso!");
+        
+       Modelo.setText("");
+       Capacidade.setText("");
+       Fabricante.setText("");
+       
+       Modelo.requestFocus();
     }//GEN-LAST:event_SalvarActionPerformed
 
-    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+    private void ConsultarAeronaveMouseClicked(java.awt.event.MouseEvent evt) {
 
-    }//GEN-LAST:event_EditarActionPerformed
-
-    private void ConsultarAeronaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarAeronaveMouseClicked
+      jTabbedPane1.setSelectedIndex(0);
+      Id.setText(ConsultarAeronave.getValueAt(ConsultarAeronave.getSelectedRow(),0).toString());
+      Modelo.setText(ConsultarAeronave.getValueAt(ConsultarAeronave.getSelectedRow(),1).toString());
+      Capacidade.setText(ConsultarAeronave.getValueAt(ConsultarAeronave.getSelectedRow(),2).toString());
+      Fabricante.setText(ConsultarAeronave.getValueAt(ConsultarAeronave.getSelectedRow(),3).toString());
+//GEN-FIRST:event_ConsultarAeronaveMouseClicked
     }//GEN-LAST:event_ConsultarAeronaveMouseClicked
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
        
     }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void Editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Editar1ActionPerformed
+        Aeronave aeronave = new Aeronave();
+
+        aeronave.setModelo(Modelo.getText());
+        aeronave.setCapacidade(Integer.parseInt(Capacidade.getText()));
+        aeronave.setFabricante(Fabricante.getText());
+
+        aeronave.setIdAeronave(Integer.parseInt(Id.getText()));
+
+        AeronaveController aeronaveController = new AeronaveController();
+        aeronaveController.update(aeronave);
+        listar();
+
+        JOptionPane.showMessageDialog(null,"Aeronave atualizada com sucesso!");
+    }//GEN-LAST:event_Editar1ActionPerformed
+
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+        Aeronave aeronave = new Aeronave();
+
+        aeronave.setModelo(Modelo.getText());
+        aeronave.setCapacidade(Integer.parseInt(Capacidade.getText()));
+        aeronave.setFabricante(Fabricante.getText());
+
+        aeronave.setIdAeronave(Integer.parseInt(Id.getText()));
+
+        AeronaveController aeronaveController = new AeronaveController();
+        aeronaveController.delete(aeronave);
+        listar();
+
+        JOptionPane.showMessageDialog(null,"Aeronave excluida com sucesso!");
+    }//GEN-LAST:event_ExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,8 +343,10 @@ public class Aeronave3 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane Capacidade;
     private javax.swing.JTable ConsultarAeronave;
-    private javax.swing.JButton Editar;
+    private javax.swing.JButton Editar1;
+    private javax.swing.JButton Excluir;
     private javax.swing.JTextPane Fabricante;
+    private javax.swing.JTextPane Id;
     private javax.swing.JTextPane Modelo;
     private javax.swing.JButton Salvar;
     private javax.swing.JLabel jLabel3;
@@ -288,6 +355,7 @@ public class Aeronave3 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
