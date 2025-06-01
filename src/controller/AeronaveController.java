@@ -43,10 +43,6 @@ public class AeronaveController {
             }
             throw new RuntimeException(e);
         }
-        finally {
-            DB.closeStatement(ps);
-            DB.closeConnection();
-        }
     }
 
 
@@ -67,9 +63,6 @@ public class AeronaveController {
            return lista;
         } catch (SQLException e){
             throw new DbException("Exceção : " + e);
-        }finally {
-            DB.closeStatement(ps);
-            DB.closeConnection();
         }
     }
 
