@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Carlos
  */
-public class Aeronave3 extends javax.swing.JFrame {
+public class Aeronavee extends javax.swing.JFrame {
     
     public void listar(){
         
@@ -37,7 +37,7 @@ public class Aeronave3 extends javax.swing.JFrame {
     /**
      * Creates new form Aeronave3
      */
-    public Aeronave3() {
+    public Aeronavee() {
         initComponents();
         listar();
         Id.setVisible(false);
@@ -238,6 +238,13 @@ public class Aeronave3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limparDados(){
+        Modelo.setText("");
+       Capacidade.setText("");
+       Fabricante.setText("");
+       
+       Modelo.requestFocus();
+    }
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
 
         Aeronave aeronave = new Aeronave();
@@ -252,11 +259,7 @@ public class Aeronave3 extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null,"Aeronave cadastrada com sucesso!");
         
-       Modelo.setText("");
-       Capacidade.setText("");
-       Fabricante.setText("");
-       
-       Modelo.requestFocus();
+       limparDados();
     }//GEN-LAST:event_SalvarActionPerformed
 
     private void ConsultarAeronaveMouseClicked(java.awt.event.MouseEvent evt) {
@@ -287,8 +290,11 @@ public class Aeronave3 extends javax.swing.JFrame {
         listar();
 
         JOptionPane.showMessageDialog(null,"Aeronave atualizada com sucesso!");
+        
+        limparDados();
     }//GEN-LAST:event_Editar1ActionPerformed
 
+    
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
         Aeronave aeronave = new Aeronave();
 
@@ -303,6 +309,8 @@ public class Aeronave3 extends javax.swing.JFrame {
         listar();
 
         JOptionPane.showMessageDialog(null,"Aeronave excluida com sucesso!");
+        
+       limparDados();
     }//GEN-LAST:event_ExcluirActionPerformed
 
     /**
@@ -322,20 +330,21 @@ public class Aeronave3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Aeronave3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aeronave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Aeronave3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aeronave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Aeronave3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aeronave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Aeronave3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aeronave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Aeronave3().setVisible(true);
+                new Aeronavee().setVisible(true);
             }
         });
     }
