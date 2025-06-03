@@ -4,11 +4,14 @@
  */
 package view;
 
+import controller.AeronaveController;
 import controller.VooController;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.Aeronave;
 import model.Voo;
@@ -24,6 +27,7 @@ public class Vooo extends javax.swing.JFrame {
      */
     public Vooo() {
         initComponents();
+        listarAeronaves();
     }
 
     /**
@@ -116,6 +120,12 @@ public class Vooo extends javax.swing.JFrame {
 
         jLabel8.setText("Aeronave:");
 
+        AeronaveCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AeronaveComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -159,7 +169,7 @@ public class Vooo extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AeronaveCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(AeronaveCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 669, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -188,10 +198,10 @@ public class Vooo extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(AeronaveCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AeronaveCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Salvar)
                     .addComponent(Editar1)
@@ -287,17 +297,34 @@ public class Vooo extends javax.swing.JFrame {
        voo.setDestino(Destino.getText());
        voo.setStatus(Status.getText());
        
-       Aeronave aeronave = new Aeronave();
-       aeronave = (Aeronave) AeronaveCombo.getSelectedItem();
-       voo.setAeronave(aeronave);
+       String selecionado = (String) AeronaveCombo.getSelectedItem();
+       int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
+       
+       AeronaveController aeronaveController = new AeronaveController();
+       Aeronave aeronave = aeronaveController.findById(idAeronave);
+       
+       voo.setAeronave((aeronave));
        
        VooController vooController = new VooController();
        
        vooController.create(voo);
-       
-         
+      
     }//GEN-LAST:event_SalvarActionPerformed
 
+    private void listarAeronaves(){
+        AeronaveController aeronaveController = new AeronaveController();
+        List<Aeronave> listarAeronave = aeronaveController.read();
+        
+        AeronaveCombo.removeAllItems();
+       
+            for(Aeronave aeronave : listarAeronave){
+                
+            AeronaveCombo.addItem(aeronave.getIdAeronave() + " - " + aeronave.getModelo());
+        }
+
+    }
+    
+    
     private void Editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Editar1ActionPerformed
         
     }//GEN-LAST:event_Editar1ActionPerformed
@@ -313,6 +340,10 @@ public class Vooo extends javax.swing.JFrame {
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
 
     }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void AeronaveComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AeronaveComboActionPerformed
+
+    }//GEN-LAST:event_AeronaveComboActionPerformed
 
     /**
      * @param args the command line arguments

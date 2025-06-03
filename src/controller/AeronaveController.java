@@ -100,5 +100,14 @@ public class AeronaveController {
             throw new DbException("Exceção : " + e);
         }
     }
+    
+    public Aeronave findById(int id){
+        for(Aeronave a : read()){
+            if(a.getIdAeronave() == id){
+                return a;
+            }
+        }
+        return null;
+    }
 }
 
