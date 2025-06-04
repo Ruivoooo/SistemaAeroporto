@@ -15,7 +15,7 @@ public class Passageiro {
         this.idPassageiro = idPassageiro;
         this.nome = nome;
         this.contato = contato;
-        CpfOuPassaport = cpfOuPassaport;
+        this.CpfOuPassaport = cpfOuPassaport;
     }
 
     public Passageiro(){}
