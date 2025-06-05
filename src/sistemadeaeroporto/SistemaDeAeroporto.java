@@ -6,11 +6,13 @@ package sistemadeaeroporto;
 
 import model.Aeronave;
 import controller.AeronaveController;
+import view.menu;
 
 
 
 public class SistemaDeAeroporto{
     public static void main(String[] args) {
+        new menu().setVisible(true);
        
     }
    }

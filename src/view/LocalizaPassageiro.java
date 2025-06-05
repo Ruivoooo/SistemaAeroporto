@@ -1,12 +1,11 @@
 package view;
 
 
-import controller.AeronaveController;
 import controller.PassageiroController;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import model.Aeronave;
 import model.Passageiro;
+import view.PassageiroView;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,7 +22,7 @@ public class LocalizaPassageiro extends javax.swing.JFrame {
         
         PassageiroController passageiroController = new PassageiroController();
         List<Passageiro> lista = passageiroController.read();
-        DefaultTableModel dados = (DefaultTableModel)jTable1.getModel();
+        DefaultTableModel dados = (DefaultTableModel)TbPassageiro.getModel();
         dados.setNumRows(0);
         
         for(Passageiro passageiro : lista ){
@@ -35,13 +34,13 @@ public class LocalizaPassageiro extends javax.swing.JFrame {
         });
         }
     }
+    
+    private PassageiroView passageiroView;
 
-    /**
-     * Creates new form LocalizaPassageiro
-     */
-    public LocalizaPassageiro() {
+    public LocalizaPassageiro(PassageiroView passageiroView) {
         initComponents();
         listar();
+        this.passageiroView = passageiroView;
     }
     
     
@@ -57,11 +56,11 @@ public class LocalizaPassageiro extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TbPassageiro = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TbPassageiro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -72,12 +71,12 @@ public class LocalizaPassageiro extends javax.swing.JFrame {
                 "ID", "Nome", "CPF / Passaport", "Contato"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        TbPassageiro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                TbPassageiroMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TbPassageiro);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,48 +112,25 @@ public class LocalizaPassageiro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void TbPassageiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TbPassageiroMouseClicked
+        String id = TbPassageiro.getValueAt(TbPassageiro.getSelectedRow(),0).toString();
+        String nome = TbPassageiro.getValueAt(TbPassageiro.getSelectedRow(),1).toString();
+        String cpf = TbPassageiro.getValueAt(TbPassageiro.getSelectedRow(),2).toString();
+        String contato = TbPassageiro.getValueAt(TbPassageiro.getSelectedRow(),3).toString();
+        
+        passageiroView.BuscarPassageiro(id, nome, cpf, contato);
+        this.dispose();
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_TbPassageiroMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LocalizaPassageiro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LocalizaPassageiro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LocalizaPassageiro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LocalizaPassageiro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LocalizaPassageiro().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TbPassageiro;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

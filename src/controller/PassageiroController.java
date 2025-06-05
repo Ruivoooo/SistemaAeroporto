@@ -84,6 +84,29 @@ public class PassageiroController {
             throw new DbException("Exceção " + e);
         }
     }
+    
+    public int getLastId(){
+       
+        int id = 0;
+        
+        try{
+            
+            
+            
+            conn = DB.getConnection();
+            ps = conn.prepareStatement("SELECT MAX(IdPassageiro) from Passageiro");
+                    rs = ps.executeQuery();
+                   
+            if(rs.next()){
+                id = rs.getInt(1);
+            }      
+            
+        }catch (SQLException e){
+            throw new DbException("Exceção " + e);
+        }
+        
+        return id;
+    }
 
 
 

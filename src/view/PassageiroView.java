@@ -8,6 +8,7 @@ import controller.AeronaveController;
 import model.Aeronave;
 import model.Passageiro;
 import controller.PassageiroController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +22,23 @@ public class PassageiroView extends javax.swing.JFrame {
     public PassageiroView() {
         initComponents();
     }
+    
+    private void limpar(){
+        
+        id.setText("0");
+        nome.setText("");
+        cpf.setText("");
+        contato.setText("");
+       
+        nome.requestFocus();
+    }
+    
+    public void BuscarPassageiro(String id, String nome, String cpf, String contato){
+        this.id.setText(id);
+        this.nome.setText(nome);
+        this.cpf.setText(cpf);
+        this.contato.setText(contato);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,22 +49,25 @@ public class PassageiroView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        nome = new javax.swing.JTextField();
+        JPanel = new javax.swing.JPanel();
+        lId = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cpf = new javax.swing.JTextField();
         contato = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bNovo = new javax.swing.JButton();
+        bLocalizar = new javax.swing.JButton();
+        bSalvar = new javax.swing.JButton();
+        bExcluir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        nome = new javax.swing.JTextPane();
+        jLabel1 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ID: ");
+        lId.setText("ID: ");
 
         jLabel2.setText("Nome:");
 
@@ -54,89 +75,101 @@ public class PassageiroView extends javax.swing.JFrame {
 
         jLabel4.setText("Contato:");
 
-        jButton1.setText("Novo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bNovo.setText("Novo");
+        bNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bNovoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Localizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bLocalizar.setText("Localizar");
+        bLocalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bLocalizarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Salvar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bSalvar.setText("Salvar");
+        bSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bSalvarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Excluir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bExcluir.setText("Excluir");
+        bExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bExcluirActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nome)
-                    .addComponent(cpf)
-                    .addComponent(contato, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
-                .addGap(672, 672, 672))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+        jScrollPane1.setViewportView(nome);
+
+        id.setText("0");
+
+        javax.swing.GroupLayout JPanelLayout = new javax.swing.GroupLayout(JPanel);
+        JPanel.setLayout(JPanelLayout);
+        JPanelLayout.setHorizontalGroup(
+            JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelLayout.createSequentialGroup()
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPanelLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(JPanelLayout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(jButton1)
+                        .addComponent(bNovo)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(bLocalizar)
                         .addGap(211, 211, 211)
-                        .addComponent(jButton3)
+                        .addComponent(bSalvar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
+                        .addComponent(bExcluir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cpf)
+                        .addComponent(contato, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1))
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(672, 672, 672))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        JPanelLayout.setVerticalGroup(
+            JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id)
+                    .addComponent(lId))
+                .addGap(22, 22, 22)
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addGroup(JPanelLayout.createSequentialGroup()
+                        .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bNovo)
+                    .addComponent(bLocalizar)
+                    .addComponent(bSalvar)
+                    .addComponent(bExcluir))
                 .addGap(40, 40, 40))
         );
 
@@ -144,44 +177,94 @@ public class PassageiroView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LocalizaPassageiro tela = new LocalizaPassageiro();   
-tela.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+         Passageiro passageiro = new Passageiro();
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        passageiro.setNome(nome.getText());
+        passageiro.setCpfOuPassaport(cpf.getText());
+        passageiro.setContato(contato.getText());
 
-        Passageiro passageiro = new Passageiro();
+        passageiro.setIdPassageiro(Integer.parseInt(id.getText()));
         
+        PassageiroController passageiroController = new PassageiroController();
+        passageiroController.delete(passageiro);
+
+        JOptionPane.showMessageDialog(null,"Passageiro excluida com sucesso!");
+        
+       limpar();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bExcluirActionPerformed
+
+    private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
+
+        
+        if(id.getText().equals("0")){
+        Passageiro passageiro = new Passageiro();
+
         passageiro.setNome(nome.getText());
         passageiro.setCpfOuPassaport(cpf.getText());
         passageiro.setContato(contato.getText());
 
         PassageiroController passageiroController = new PassageiroController();
         passageiroController.create(passageiro);
+        
+        int idPassageiroInt = passageiroController.getLastId();
+        String idPassageiroString = Integer.toString(idPassageiroInt);
+        id.setText(idPassageiroString);
+        
+        
+        JOptionPane.showMessageDialog(null,"Passageiro salvo com sucesso!");
+        
+        }else{
+            
+            Passageiro passageiro = new Passageiro();
+            
+            Aeronave aeronave = new Aeronave();
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+        passageiro.setNome(nome.getText());
+        passageiro.setCpfOuPassaport(cpf.getText());
+        passageiro.setContato(contato.getText());
+        passageiro.setIdPassageiro(Integer.valueOf(id.getText()));
 
-    
-    
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        PassageiroController passageiroController = new PassageiroController();
+        passageiroController.update(passageiro);
+
+        JOptionPane.showMessageDialog(null,"Passageiro atualizado com sucesso!");
+        
+        }
+        
+        
+    }//GEN-LAST:event_bSalvarActionPerformed
+
+    private void bLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLocalizarActionPerformed
+        LocalizaPassageiro tela = new LocalizaPassageiro(this);
+        tela.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_bLocalizarActionPerformed
+
+    private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed
+
+        limpar();
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bNovoActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -218,17 +301,20 @@ tela.setVisible(true);// TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPanel;
+    private javax.swing.JButton bExcluir;
+    private javax.swing.JButton bLocalizar;
+    private javax.swing.JButton bNovo;
+    private javax.swing.JButton bSalvar;
     private javax.swing.JTextField contato;
     private javax.swing.JTextField cpf;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField nome;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lId;
+    private javax.swing.JTextPane nome;
     // End of variables declaration//GEN-END:variables
 }
