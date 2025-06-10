@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Aeronave;
 import model.Voo;
 
@@ -28,7 +29,37 @@ public class Vooo extends javax.swing.JFrame {
     public Vooo() {
         initComponents();
         listarAeronaves();
+        listarVoos();
     }
+    
+    private void limparDados(){
+        Origem.setText("");
+        Destino.setText("");
+        DataHoraPartida.setText("");
+        DataHoraChegada.setText("");
+        Status.setText("");
+   
+        }
+    
+    public void listarVoos(){
+        
+        VooController vooController = new VooController();
+        List<Voo> lista = vooController.read();
+        DefaultTableModel dados = (DefaultTableModel) ConsultarVoo.getModel();
+        dados.setNumRows(0);
+        
+        for(Voo voo : lista){
+            dados.addRow(new Object[]{
+                voo.getIdVoo(),
+                voo.getOrigem(),
+                voo.getDestino(),
+                voo.getDataHoraPartida(),
+                voo.getDataHoraChegada(),
+                voo.getStatus(),
+                voo.getAeronave().getIdAeronave()
+        });
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,7 +96,7 @@ public class Vooo extends javax.swing.JFrame {
         AeronaveCombo = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        ConsultarAeronave = new javax.swing.JTable();
+        ConsultarVoo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,23 +242,23 @@ public class Vooo extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Dados Voo", jPanel1);
 
-        ConsultarAeronave.setModel(new javax.swing.table.DefaultTableModel(
+        ConsultarVoo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "IDVoo", "Origem", "DataHoraPartida", "DataHoraChegada", "Status", "IDAeronave"
+                "IDVoo", "Origem", "Destino", "DataHoraPartida", "DataHoraChegada", "Status", "IDAeronave"
             }
         ));
-        ConsultarAeronave.addMouseListener(new java.awt.event.MouseAdapter() {
+        ConsultarVoo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ConsultarAeronaveMouseClicked(evt);
+                ConsultarVooMouseClicked(evt);
             }
         });
-        jScrollPane6.setViewportView(ConsultarAeronave);
+        jScrollPane6.setViewportView(ConsultarVoo);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -308,24 +339,35 @@ public class Vooo extends javax.swing.JFrame {
        VooController vooController = new VooController();
        
        vooController.create(voo);
+       limparDados();
+       listarVoos();
       
     }//GEN-LAST:event_SalvarActionPerformed
 
+    
     private void listarAeronaves(){
         AeronaveController aeronaveController = new AeronaveController();
         List<Aeronave> listarAeronave = aeronaveController.read();
         
         AeronaveCombo.removeAllItems();
+        
+        AeronaveCombo.addItem("Selecione...");
        
             for(Aeronave aeronave : listarAeronave){
                 
             AeronaveCombo.addItem(aeronave.getIdAeronave() + " - " + aeronave.getModelo());
         }
+            
+            AeronaveCombo.setSelectedIndex(0);
 
     }
     
     
     private void Editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Editar1ActionPerformed
+       
+       
+        
+        
         
     }//GEN-LAST:event_Editar1ActionPerformed
 
@@ -333,9 +375,19 @@ public class Vooo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ExcluirActionPerformed
 
-    private void ConsultarAeronaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarAeronaveMouseClicked
+    private void ConsultarVooMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarVooMouseClicked
 
-    }//GEN-LAST:event_ConsultarAeronaveMouseClicked
+        jTabbedPane1.setSelectedIndex(0);
+        
+        Id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
+        Origem.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),1).toString());
+        Destino.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),2).toString());
+        DataHoraPartida.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),3).toString());
+        DataHoraChegada.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),4).toString());
+        Status.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),5).toString());
+        AeronaveCombo.setSelectedItem(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),6).toString());
+
+    }//GEN-LAST:event_ConsultarVooMouseClicked
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
 
@@ -382,7 +434,7 @@ public class Vooo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> AeronaveCombo;
-    private javax.swing.JTable ConsultarAeronave;
+    private javax.swing.JTable ConsultarVoo;
     private javax.swing.JTextPane DataHoraChegada;
     private javax.swing.JTextPane DataHoraPartida;
     private javax.swing.JTextPane Destino;

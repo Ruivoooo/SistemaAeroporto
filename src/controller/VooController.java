@@ -37,6 +37,7 @@ public class VooController {
             throw  new DbException("Exceção : " + e);
         }
     }
+    
 
 
     public List<Voo> read(){
@@ -64,12 +65,12 @@ public class VooController {
             return lista;
         }catch (SQLException e){
             System.out.println("Exceção : " + e);
-        }finally {
-            DB.closeStatement(ps);
-            DB.closeConnection();
         }
         return lista;
     }
+    
+    
+    
 
 
     public void update(Voo voo){
@@ -98,6 +99,8 @@ public class VooController {
             throw new DbException("Exceção " + e);
         }
     }
+    
+    
 
 
     public void delete(Voo voo){
