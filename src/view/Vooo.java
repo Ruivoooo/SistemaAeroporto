@@ -30,6 +30,7 @@ public class Vooo extends javax.swing.JFrame {
         initComponents();
         listarAeronaves();
         listarVoos();
+        Excluir.setEnabled(false);
     }
     
     private void limparDados(){
@@ -456,7 +457,9 @@ public class Vooo extends javax.swing.JFrame {
        
        listarVoos();
        limparDados();
-        
+       
+       Excluir.setEnabled(false);
+      
         
     }//GEN-LAST:event_ExcluirActionPerformed
 
@@ -471,6 +474,7 @@ public class Vooo extends javax.swing.JFrame {
         DataHoraChegada.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),4).toString());
         Status.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),5).toString());
         AeronaveCombo.setSelectedItem(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),6).toString());
+        Excluir.setEnabled(true);
 
     }//GEN-LAST:event_ConsultarVooMouseClicked
 
