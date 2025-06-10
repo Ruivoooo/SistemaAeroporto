@@ -41,6 +41,12 @@ public class Vooo extends javax.swing.JFrame {
    
         }
     
+    public static String formatTimestamp(Timestamp timestamp) {
+    if (timestamp == null) return "";
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    return sdf.format(new Date(timestamp.getTime()));
+}
+    
     public void listarVoos(){
         
         VooController vooController = new VooController();
@@ -49,12 +55,15 @@ public class Vooo extends javax.swing.JFrame {
         dados.setNumRows(0);
         
         for(Voo voo : lista){
+            String partidaFormatada = formatTimestamp(voo.getDataHoraPartida());
+            String chegadaFormatada = formatTimestamp(voo.getDataHoraChegada());
+        
             dados.addRow(new Object[]{
                 voo.getIdVoo(),
                 voo.getOrigem(),
                 voo.getDestino(),
-                voo.getDataHoraPartida(),
-                voo.getDataHoraChegada(),
+                partidaFormatada,
+                chegadaFormatada,
                 voo.getStatus(),
                 voo.getAeronave().getIdAeronave()
         });
@@ -364,14 +373,90 @@ public class Vooo extends javax.swing.JFrame {
     
     
     private void Editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Editar1ActionPerformed
+       Voo voo = new Voo();
        
        
-        
-        
-        
+       try{
+           String texto = DataHoraPartida.getText();
+       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date data = formato.parse(texto);
+            Timestamp timeStamp = new Timestamp(data.getTime());
+            voo.setDataHoraPartida(timeStamp);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
+        }try{
+           String texto = DataHoraChegada.getText();
+       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date data = formato.parse(texto);
+            Timestamp timeStamp = new Timestamp(data.getTime());
+            voo.setDataHoraChegada(timeStamp);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
+        }
+       
+       voo.setIdVoo(Integer.parseInt(Id.getText()));
+       voo.setOrigem(Origem.getText());
+       voo.setDestino(Destino.getText());
+       voo.setStatus(Status.getText());
+       
+       String selecionado = (String) AeronaveCombo.getSelectedItem();
+       int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
+       
+       AeronaveController aeronaveController = new AeronaveController();
+       Aeronave aeronave = aeronaveController.findById(idAeronave);
+       
+       voo.setAeronave((aeronave));
+       
+       VooController vooController = new VooController();
+       
+       vooController.update(voo);
+       listarVoos();
+       limparDados();
+       
+       
+       
     }//GEN-LAST:event_Editar1ActionPerformed
 
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+        Voo voo = new Voo();
+        try{
+           String texto = DataHoraPartida.getText();
+       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date data = formato.parse(texto);
+            Timestamp timeStamp = new Timestamp(data.getTime());
+            voo.setDataHoraPartida(timeStamp);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
+        }try{
+           String texto = DataHoraChegada.getText();
+       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date data = formato.parse(texto);
+            Timestamp timeStamp = new Timestamp(data.getTime());
+            voo.setDataHoraChegada(timeStamp);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
+        }
+       
+        voo.setIdVoo(Integer.parseInt(Id.getText())); 
+     
+        voo.setOrigem(Origem.getText());
+        voo.setDestino(Destino.getText());
+        voo.setStatus(Status.getText());
+
+        String selecionado = (String) AeronaveCombo.getSelectedItem();
+       int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
+       
+       AeronaveController aeronaveController = new AeronaveController();
+       Aeronave aeronave = aeronaveController.findById(idAeronave);
+       
+       voo.setAeronave((aeronave));
+       
+       VooController vooController = new VooController();
+       vooController.delete(voo);
+       
+       listarVoos();
+       limparDados();
+        
         
     }//GEN-LAST:event_ExcluirActionPerformed
 
