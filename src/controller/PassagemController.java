@@ -93,4 +93,13 @@ public class PassagemController {
             throw new DbException("Exceção " + e);
         }
     }
+    
+    public Passagem findById(int id){
+        for(Passagem p : read()){
+           if(p.getIdPassagem() == id){ 
+               return p;
+           }
+        }
+        return null;
+    }
 }
