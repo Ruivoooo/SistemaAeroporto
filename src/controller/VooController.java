@@ -100,6 +100,14 @@ public class VooController {
         }
     }
     
+    public Voo findById(int id){
+        for(Voo a : read()){
+            if(a.getIdVoo() == id){
+                return a;
+            }
+        }
+        return null;
+    }
     
 
 

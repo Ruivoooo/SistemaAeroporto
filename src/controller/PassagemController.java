@@ -95,11 +95,35 @@ public class PassagemController {
     }
     
     public Passagem findById(int id){
-        for(Passagem p : read()){
-           if(p.getIdPassagem() == id){ 
-               return p;
-           }
+        for(Passagem a : read()){
+            if(a.getIdPassagem() == id){
+                return a;
+            }
         }
         return null;
     }
+    
+    public int getLastId(){
+       
+        int id = 0;
+        
+        try{
+            
+            
+            
+            conn = DB.getConnection();
+            ps = conn.prepareStatement("SELECT MAX(IdPassagem) from Passagem");
+                    rs = ps.executeQuery();
+                   
+            if(rs.next()){
+                id = rs.getInt(1);
+            }      
+            
+        }catch (SQLException e){
+            throw new DbException("Exceção " + e);
+        }
+        
+        return id;
+    }
+    
 }

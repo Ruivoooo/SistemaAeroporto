@@ -88,5 +88,37 @@ public class BagagemController {
 
         }
     }
+    
+    public Bagagem findById(int id){
+        for(Bagagem a : read()){
+            if(a.getIdBagagem() == id){
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    public int getLastId(){
+       
+        int id = 0;
+        
+        try{
+            
+            
+            
+            conn = DB.getConnection();
+            ps = conn.prepareStatement("SELECT MAX(IdBagagem) from Bagagem");
+                    rs = ps.executeQuery();
+                   
+            if(rs.next()){
+                id = rs.getInt(1);
+            }      
+            
+        }catch (SQLException e){
+            throw new DbException("Exceção " + e);
+        }
+        
+        return id;
+    }
 }
 

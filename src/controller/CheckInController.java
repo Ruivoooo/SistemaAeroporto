@@ -84,4 +84,36 @@ public class CheckInController {
             throw new DbException("Exceção : " + e);
         }
     }
+    
+    public CheckIn findById(int id){
+        for(CheckIn a : read()){
+            if(a.getIdCheckIn() == id){
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    public int getLastId(){
+       
+        int id = 0;
+        
+        try{
+            
+            
+            
+            conn = DB.getConnection();
+            ps = conn.prepareStatement("SELECT MAX(IdCheckIn) from CheckIn");
+                    rs = ps.executeQuery();
+                   
+            if(rs.next()){
+                id = rs.getInt(1);
+            }      
+            
+        }catch (SQLException e){
+            throw new DbException("Exceção " + e);
+        }
+        
+        return id;
+    }
 }
