@@ -42,6 +42,7 @@ public class Vooo extends javax.swing.JFrame {
         DataHoraPartida.setText("");
         DataHoraChegada.setText("");
         Status.setText("");
+        id.setText("0");
    
         }
     
@@ -370,14 +371,29 @@ public class Vooo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void ConsultarVooMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarVooMouseClicked
-id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
+     id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
         Origem.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),1).toString());
         Destino.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),2).toString());
-        Status.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),3).toString());          // TODO add your handling code here:
+        DataHoraPartida.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),3).toString());
+        DataHoraChegada.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),4).toString());
+        Status.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),5).toString());  
+        Excluir.setEnabled(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_ConsultarVooMouseClicked
 
+    
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
 
+        if (Origem.getText().trim().isEmpty() ||
+                    Destino.getText().trim().isEmpty() ||
+                    DataHoraPartida.getText().trim().isEmpty() ||
+                    Status.getText().trim().isEmpty() ||
+                    DataHoraChegada.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+                return;
+            }
+        
         if(id.getText().equals("0")){
             Voo voo = new Voo();
             try{
@@ -414,6 +430,8 @@ id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
             VooController vooController = new VooController();
 
             vooController.create(voo);
+            JOptionPane.showMessageDialog(null,"Voo cadastrada com sucesso!");
+            listarVoos();
             limparDados();
 
         }else{
@@ -438,7 +456,7 @@ id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
                 JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
             }
 
-            voo.setIdVoo(Integer.parseInt(Id.getText()));
+            voo.setIdVoo(Integer.parseInt(id.getText()));
             voo.setOrigem(Origem.getText());
             voo.setDestino(Destino.getText());
             voo.setStatus(Status.getText());
@@ -454,6 +472,8 @@ id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
             VooController vooController = new VooController();
 
             vooController.update(voo);
+            JOptionPane.showMessageDialog(null,"Voo atualizado com sucesso!");
+            Excluir.setEnabled(false);
             listarVoos();
             limparDados();
 
@@ -480,7 +500,7 @@ id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
             JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
         }
 
-        voo.setIdVoo(Integer.parseInt(Id.getText()));
+        voo.setIdVoo(Integer.parseInt(id.getText()));
 
         voo.setOrigem(Origem.getText());
         voo.setDestino(Destino.getText());
@@ -496,6 +516,7 @@ id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
 
         VooController vooController = new VooController();
         vooController.delete(voo);
+        JOptionPane.showMessageDialog(null,"Voo deletado com sucesso!");
 
         listarVoos();
         limparDados();
@@ -517,8 +538,6 @@ id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
         List<Aeronave> listarAeronave = aeronaveController.read();
         
         AeronaveCombo.removeAllItems();
-        
-        AeronaveCombo.addItem("Selecione...");
        
             for(Aeronave aeronave : listarAeronave){
                 

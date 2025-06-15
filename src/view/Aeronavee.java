@@ -47,11 +47,11 @@ public class Aeronavee extends javax.swing.JFrame {
         //imagem
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/icons8-avião-50.png"));
         jLabel1.setIcon(icon);
+        Excluir.setEnabled(false);
         
     }
-    
-    
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -301,8 +301,24 @@ public class Aeronavee extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
+        try{
+
+            if (Modelo.getText().trim().isEmpty() ||
+                    Capacidade.getText().trim().isEmpty() ||
+                    Fabricante.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+                return;
+            }
+
+            int capacidade = Integer.parseInt(Capacidade.getText().trim());
+            if (capacidade <= 0) {
+                JOptionPane.showMessageDialog(null, "A capacidade deve ser um número maior que zero!");
+                return;
+            }
 
         if(id.getText().equals("0")){
+            
         Aeronave aeronave = new Aeronave();
 
         aeronave.setModelo(Modelo.getText());
@@ -316,24 +332,32 @@ public class Aeronavee extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Aeronave cadastrada com sucesso!");
 
         limparDados();
+        
         }else{
-            Aeronave aeronave = new Aeronave();
- 
+        Aeronave aeronave = new Aeronave();
+         
+        
         aeronave.setModelo(Modelo.getText());
         aeronave.setCapacidade(Integer.parseInt(Capacidade.getText()));
         aeronave.setFabricante(Fabricante.getText());
 
+        
         aeronave.setIdAeronave(Integer.parseInt(id.getText()));
 
         AeronaveController aeronaveController = new AeronaveController();
         aeronaveController.update(aeronave);
         listar();
+        
 
         JOptionPane.showMessageDialog(null,"Aeronave atualizada com sucesso!");
-
         limparDados();
+        
         }
         
+        }catch(NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(null,"Capacidade deve ser um número válido.");
+        }
     }//GEN-LAST:event_SalvarActionPerformed
 
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
@@ -352,6 +376,7 @@ public class Aeronavee extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Aeronave excluida com sucesso!");
 
         limparDados();
+        Excluir.setEnabled(false);
     }//GEN-LAST:event_ExcluirActionPerformed
 
     private void ConsultarAeronaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarAeronaveMouseClicked
@@ -359,14 +384,15 @@ public class Aeronavee extends javax.swing.JFrame {
         Modelo.setText(ConsultarAeronave.getValueAt(ConsultarAeronave.getSelectedRow(),1).toString());
         Capacidade.setText(ConsultarAeronave.getValueAt(ConsultarAeronave.getSelectedRow(),2).toString());
         Fabricante.setText(ConsultarAeronave.getValueAt(ConsultarAeronave.getSelectedRow(),3).toString());
+        Excluir.setEnabled(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_ConsultarAeronaveMouseClicked
 
     private void limparDados(){
-        Modelo.setText("");
+       Modelo.setText("");
        Capacidade.setText("");
        Fabricante.setText("");
-       
+       id.setText("0");
        Modelo.requestFocus();
     }
     

@@ -41,7 +41,7 @@ public class CheckInn extends javax.swing.JFrame {
     private void limparDados(){
         Bagagem.setText("");
         DataHora.setText("");
-   
+        id.setText("0");
         }
     
     public void listarCheckIn(){
@@ -201,7 +201,7 @@ public class CheckInn extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PassagemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(292, 292, 292)
                         .addComponent(jLabel14)))
@@ -310,7 +310,10 @@ public class CheckInn extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void ConsultarCheckInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarCheckInMouseClicked
-        // TODO add your handling code here:
+        id.setText(ConsultarCheckIn.getValueAt(ConsultarCheckIn.getSelectedRow(),0).toString());
+        Bagagem.setText(ConsultarCheckIn.getValueAt(ConsultarCheckIn.getSelectedRow(),1).toString());
+        DataHora.setText(ConsultarCheckIn.getValueAt(ConsultarCheckIn.getSelectedRow(),2).toString());
+        Excluir.setEnabled(true);
     }//GEN-LAST:event_ConsultarCheckInMouseClicked
 
     private void PassagemComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassagemComboActionPerformed
@@ -319,6 +322,16 @@ public class CheckInn extends javax.swing.JFrame {
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
 
+        try{
+      
+            int capacidade = Integer.parseInt(Bagagem.getText().trim());
+            if (capacidade < 0) {
+                JOptionPane.showMessageDialog(null, "As bagagens despachadas devem ser um número maior ou igual a zero!");
+                return;
+            }
+        
+        
+        
         if(id.getText().equals("0")){
             CheckIn checkIn = new CheckIn();
 
@@ -345,13 +358,14 @@ public class CheckInn extends javax.swing.JFrame {
             CheckInController checkInController = new CheckInController();
 
             checkInController.create(checkIn);
+            listarCheckIn();
             limparDados();
 
-            JOptionPane.showMessageDialog(null,"CheckIn cadastrada com sucesso!");
+            JOptionPane.showMessageDialog(null,"CheckIn feito com sucesso!");
         }else{
             CheckIn checkIn = new CheckIn();
 
-            checkIn.setIdCheckIn(Integer.parseInt(Id.getText()));
+            checkIn.setIdCheckIn(Integer.parseInt(id.getText()));
 
             try{
                 String texto = DataHora.getText();
@@ -377,9 +391,13 @@ public class CheckInn extends javax.swing.JFrame {
             checkInController.update(checkIn);
             listarCheckIn();
 
-            JOptionPane.showMessageDialog(null,"CheckIn atualizada com sucesso!");
-
+            JOptionPane.showMessageDialog(null,"CheckIn atualizado com sucesso!");
+            Excluir.setEnabled(false);
             limparDados();
+        }
+        }catch(NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(null,"Bagagens despachadas deve ser um número válido.");
         }
     }//GEN-LAST:event_SalvarActionPerformed
 
@@ -395,7 +413,7 @@ public class CheckInn extends javax.swing.JFrame {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
         }
-        checkIn.setIdCheckIn(Integer.parseInt(Id.getText()));
+        checkIn.setIdCheckIn(Integer.parseInt(id.getText()));
 
         String selecionado = (String) PassagemCombo.getSelectedItem();
         int idPassagem = Integer.parseInt(selecionado.split(" - ")[0]);

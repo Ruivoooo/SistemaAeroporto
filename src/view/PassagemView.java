@@ -455,7 +455,8 @@ public class PassagemView extends javax.swing.JFrame {
 id.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),0).toString());
         assento.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),1).toString());
         classe.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),2).toString());
-        status.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),3).toString());  // TODO add your handling code here:
+        status.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),3).toString());
+        // TODO add your handling code here:
     }//GEN-LAST:event_ConsultarPassagemMouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
