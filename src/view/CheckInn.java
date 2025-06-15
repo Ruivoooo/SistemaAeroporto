@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import model.CheckIn;
 import model.Passagem;
 import static view.Vooo.formatTimestamp;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -30,6 +31,9 @@ public class CheckInn extends javax.swing.JFrame {
         listarCheckIn();
         listarPassagens();
         Excluir.setEnabled(false);
+        //imagem
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/icons8-bilhete-50.png"));
+        jLabel1.setIcon(icon);
 
         
     }
@@ -70,21 +74,25 @@ public class CheckInn extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Id = new javax.swing.JTextPane();
+        jPanel2 = new javax.swing.JPanel();
+        Excluir = new javax.swing.JButton();
+        Salvar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        lId1 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         Bagagem = new javax.swing.JTextPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         DataHora = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
-        Salvar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Id = new javax.swing.JTextPane();
-        Editar = new javax.swing.JButton();
-        Excluir = new javax.swing.JButton();
-        PassagemCombo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        PassagemCombo = new javax.swing.JComboBox<>();
+        jScrollPane7 = new javax.swing.JScrollPane();
         ConsultarCheckIn = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,6 +103,65 @@ public class CheckInn extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jScrollPane2.setViewportView(Id);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        Excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-lixeira-15.png"))); // NOI18N
+        Excluir.setText("Excluir");
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
+            }
+        });
+
+        Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-salvar-como-15.png"))); // NOI18N
+        Salvar.setText("Salvar");
+        Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText(" ");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Excluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(Salvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(Salvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Excluir)
+                .addGap(59, 59, 59))
+        );
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        lId1.setText("ID: ");
+
+        id.setText("0");
+
+        jLabel14.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel14.setText("CHECK-IN");
+
         jLabel3.setText("Bagagem Desp:");
 
         jScrollPane5.setViewportView(Bagagem);
@@ -103,28 +170,7 @@ public class CheckInn extends javax.swing.JFrame {
 
         jLabel4.setText("Data Hora:");
 
-        Salvar.setText("Salvar");
-        Salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvarActionPerformed(evt);
-            }
-        });
-
-        jScrollPane2.setViewportView(Id);
-
-        Editar.setText("Editar");
-        Editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditarActionPerformed(evt);
-            }
-        });
-
-        Excluir.setText("Excluir");
-        Excluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExcluirActionPerformed(evt);
-            }
-        });
+        jLabel5.setText("IdPassagem:");
 
         PassagemCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,75 +178,58 @@ public class CheckInn extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("IdPassagem:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(Salvar)
-                                .addGap(29, 29, 29)
-                                .addComponent(Editar)
-                                .addGap(26, 26, 26)
-                                .addComponent(Excluir))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(201, 201, 201)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(466, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(lId1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PassagemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(292, 292, 292)
+                        .addComponent(jLabel14)))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(38, 38, 38)
-                            .addComponent(jLabel3))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id)
+                    .addComponent(lId1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PassagemCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Salvar)
-                    .addComponent(Editar)
-                    .addComponent(Excluir))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jTabbedPane1.addTab("Dados CheckIn", jPanel1);
 
         ConsultarCheckIn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -218,83 +247,171 @@ public class CheckInn extends javax.swing.JFrame {
                 ConsultarCheckInMouseClicked(evt);
             }
         });
-        jScrollPane6.setViewportView(ConsultarCheckIn);
+        jScrollPane7.setViewportView(ConsultarCheckIn);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(488, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                .addGap(41, 41, 41))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
         );
 
-        jTabbedPane1.addTab("Consultar Checkin's", jPanel5);
+        jTabbedPane1.addTab("Dados CheckIn", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 933, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(89, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane1)
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void ConsultarCheckInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarCheckInMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConsultarCheckInMouseClicked
+
+    private void PassagemComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassagemComboActionPerformed
+
+    }//GEN-LAST:event_PassagemComboActionPerformed
+
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
 
+        if(id.getText().equals("0")){
+            CheckIn checkIn = new CheckIn();
+
+            try{
+                String texto = DataHora.getText();
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date data = formato.parse(texto);
+                Timestamp timeStamp = new Timestamp(data.getTime());
+                checkIn.setDataHora(timeStamp);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
+            }
+
+            checkIn.setQtdBagagensDesp(Integer.parseInt(Bagagem.getText()));
+
+            String selecionado = (String) PassagemCombo.getSelectedItem();
+            int idPassagem = Integer.parseInt(selecionado);
+
+            PassagemController passagemController = new PassagemController();
+            Passagem passagem = passagemController.findById(idPassagem);
+
+            checkIn.setPassagem(passagem);
+
+            CheckInController checkInController = new CheckInController();
+
+            checkInController.create(checkIn);
+            limparDados();
+
+            JOptionPane.showMessageDialog(null,"CheckIn cadastrada com sucesso!");
+        }else{
+            CheckIn checkIn = new CheckIn();
+
+            checkIn.setIdCheckIn(Integer.parseInt(Id.getText()));
+
+            try{
+                String texto = DataHora.getText();
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date data = formato.parse(texto);
+                Timestamp timeStamp = new Timestamp(data.getTime());
+                checkIn.setDataHora(timeStamp);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
+            }
+
+            checkIn.setQtdBagagensDesp(Integer.parseInt(Bagagem.getText()));
+
+            String selecionado = (String) PassagemCombo.getSelectedItem();
+            int idPassagem = Integer.parseInt(selecionado);
+
+            PassagemController passagemController = new PassagemController();
+            Passagem passagem = passagemController.findById(idPassagem);
+
+            CheckInController checkInController = new CheckInController();
+            checkIn.setPassagem((passagem));
+
+            checkInController.update(checkIn);
+            listarCheckIn();
+
+            JOptionPane.showMessageDialog(null,"CheckIn atualizada com sucesso!");
+
+            limparDados();
+        }
+    }//GEN-LAST:event_SalvarActionPerformed
+
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
         CheckIn checkIn = new CheckIn();
- 
+
         try{
-           String texto = DataHora.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String texto = DataHora.getText();
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date data = formato.parse(texto);
             Timestamp timeStamp = new Timestamp(data.getTime());
             checkIn.setDataHora(timeStamp);
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
+            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
         }
+        checkIn.setIdCheckIn(Integer.parseInt(Id.getText()));
 
-        checkIn.setQtdBagagensDesp(Integer.parseInt(Bagagem.getText()));
-        
         String selecionado = (String) PassagemCombo.getSelectedItem();
-        int idPassagem = Integer.parseInt(selecionado);
-        
+        int idPassagem = Integer.parseInt(selecionado.split(" - ")[0]);
+
         PassagemController passagemController = new PassagemController();
         Passagem passagem = passagemController.findById(idPassagem);
-        
-        checkIn.setPassagem(passagem); 
-        
         CheckInController checkInController = new CheckInController();
-        
-        checkInController.create(checkIn);
+
+        checkIn.setPassagem((passagem));
+        checkInController.delete(checkIn);
+        listarCheckIn();
+        JOptionPane.showMessageDialog(null,"CheckIn excluido com sucesso!");
+        Excluir.setEnabled(false);
+
         limparDados();
-   
-        JOptionPane.showMessageDialog(null,"CheckIn cadastrada com sucesso!");
- 
-    }//GEN-LAST:event_SalvarActionPerformed
+    }//GEN-LAST:event_ExcluirActionPerformed
 
     private void listarPassagens(){
         PassagemController passagemController = new PassagemController();
@@ -309,90 +426,6 @@ public class CheckInn extends javax.swing.JFrame {
     
     
     
-    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        CheckIn checkIn = new CheckIn();
-
-        checkIn.setIdCheckIn(Integer.parseInt(Id.getText()));
-        
-        try{
-           String texto = DataHora.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date data = formato.parse(texto);
-            Timestamp timeStamp = new Timestamp(data.getTime());
-            checkIn.setDataHora(timeStamp);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
-        }
-
-        checkIn.setQtdBagagensDesp(Integer.parseInt(Bagagem.getText()));
-        
-        String selecionado = (String) PassagemCombo.getSelectedItem();
-       int idPassagem = Integer.parseInt(selecionado);
-       
-       PassagemController passagemController = new PassagemController();
-       Passagem passagem = passagemController.findById(idPassagem);
-       
-       CheckInController checkInController = new CheckInController();
-       checkIn.setPassagem((passagem));
-
-
-        checkInController.update(checkIn);
-        listarCheckIn();
-
-        JOptionPane.showMessageDialog(null,"CheckIn atualizada com sucesso!");
-
-        limparDados();
-    }//GEN-LAST:event_EditarActionPerformed
-
-    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
-        CheckIn checkIn = new CheckIn();
-
-        try{
-           String texto = DataHora.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date data = formato.parse(texto);
-            Timestamp timeStamp = new Timestamp(data.getTime());
-            checkIn.setDataHora(timeStamp);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
-        }
-       checkIn.setIdCheckIn(Integer.parseInt(Id.getText()));
-       
-         String selecionado = (String) PassagemCombo.getSelectedItem();
-       int idPassagem = Integer.parseInt(selecionado.split(" - ")[0]);
-       
-       PassagemController passagemController = new PassagemController();
-       Passagem passagem = passagemController.findById(idPassagem);
-       CheckInController checkInController = new CheckInController();
-       
-       checkIn.setPassagem((passagem));
-       checkInController.delete(checkIn);
-        listarCheckIn();
-        JOptionPane.showMessageDialog(null,"CheckIn excluido com sucesso!");
-        Excluir.setEnabled(false);
-
-        limparDados();
-    }//GEN-LAST:event_ExcluirActionPerformed
-
-    private void ConsultarCheckInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarCheckInMouseClicked
-
-        jTabbedPane1.setSelectedIndex(0);
-        
-        Id.setText(ConsultarCheckIn.getValueAt(ConsultarCheckIn.getSelectedRow(),0).toString());
-        Bagagem.setText(ConsultarCheckIn.getValueAt(ConsultarCheckIn.getSelectedRow(),1).toString());
-        DataHora.setText(ConsultarCheckIn.getValueAt(ConsultarCheckIn.getSelectedRow(),2).toString());
-        PassagemCombo.setSelectedItem(ConsultarCheckIn.getValueAt(ConsultarCheckIn.getSelectedRow(),3).toString());
-        Excluir.setEnabled(true);
-    }//GEN-LAST:event_ConsultarCheckInMouseClicked
-
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
-
-    private void PassagemComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassagemComboActionPerformed
-
-    }//GEN-LAST:event_PassagemComboActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -433,20 +466,24 @@ public class CheckInn extends javax.swing.JFrame {
     private javax.swing.JTextPane Bagagem;
     private javax.swing.JTable ConsultarCheckIn;
     private javax.swing.JTextPane DataHora;
-    private javax.swing.JButton Editar;
     private javax.swing.JButton Excluir;
     private javax.swing.JTextPane Id;
     private javax.swing.JComboBox<String> PassagemCombo;
     private javax.swing.JButton Salvar;
+    private javax.swing.JLabel id;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lId1;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Aeronave;
 import model.Voo;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -31,6 +32,8 @@ public class Vooo extends javax.swing.JFrame {
         listarAeronaves();
         listarVoos();
         Excluir.setEnabled(false);
+         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/icons8-seguro-de-voo-50.png"));
+        jLabel14.setIcon(icon);
     }
     
     private void limparDados(){
@@ -82,30 +85,34 @@ public class Vooo extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Id = new javax.swing.JTextPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        lId = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        AeronaveCombo = new javax.swing.JComboBox<>();
         jScrollPane5 = new javax.swing.JScrollPane();
         Origem = new javax.swing.JTextPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         Destino = new javax.swing.JTextPane();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        DataHoraChegada = new javax.swing.JTextPane();
-        Salvar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Id = new javax.swing.JTextPane();
-        Editar1 = new javax.swing.JButton();
-        Excluir = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         DataHoraPartida = new javax.swing.JTextPane();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        DataHoraChegada = new javax.swing.JTextPane();
         jScrollPane8 = new javax.swing.JScrollPane();
         Status = new javax.swing.JTextPane();
         jLabel8 = new javax.swing.JLabel();
-        AeronaveCombo = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        Excluir = new javax.swing.JButton();
+        Salvar = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
         ConsultarVoo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,50 +123,21 @@ public class Vooo extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Origem:");
-
-        jScrollPane5.setViewportView(Origem);
-
-        jScrollPane1.setViewportView(Destino);
-
-        jLabel4.setText("Destino:");
-
-        jLabel5.setText("DataHoraPartida:");
-
-        jScrollPane4.setViewportView(DataHoraChegada);
-
-        Salvar.setText("Salvar");
-        Salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvarActionPerformed(evt);
-            }
-        });
-
         jScrollPane2.setViewportView(Id);
 
-        Editar1.setText("Editar");
-        Editar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Editar1ActionPerformed(evt);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
             }
         });
 
-        Excluir.setText("Excluir");
-        Excluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExcluirActionPerformed(evt);
-            }
-        });
+        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel9.setText("CADASTRO DE VOO");
 
-        jLabel6.setText("DataHoraChegada");
+        lId.setText("ID: ");
 
-        jScrollPane7.setViewportView(DataHoraPartida);
-
-        jLabel7.setText("Status");
-
-        jScrollPane8.setViewportView(Status);
-
-        jLabel8.setText("Aeronave:");
+        id.setText("0");
 
         AeronaveCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,90 +145,152 @@ public class Vooo extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Salvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Editar1)
-                                .addGap(18, 18, 18)
-                                .addComponent(Excluir))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+        jScrollPane5.setViewportView(Origem);
+
+        jScrollPane1.setViewportView(Destino);
+
+        jLabel6.setText("DataHoraChegada");
+
+        jScrollPane7.setViewportView(DataHoraPartida);
+
+        jLabel4.setText("Destino:");
+
+        jLabel5.setText("DataHoraPartida:");
+
+        jLabel7.setText("Status");
+
+        jScrollPane4.setViewportView(DataHoraChegada);
+
+        jScrollPane8.setViewportView(Status);
+
+        jLabel8.setText("Aeronave:");
+
+        jLabel3.setText("Origem:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jScrollPane4))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel7)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AeronaveCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 669, Short.MAX_VALUE))))
+                                .addComponent(AeronaveCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lId)
+                                .addGap(64, 64, 64)
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id)
+                    .addComponent(lId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(AeronaveCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Salvar)
-                    .addComponent(Editar1)
-                    .addComponent(Excluir))
-                .addGap(14, 14, 14))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Dados Voo", jPanel1);
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        Excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-lixeira-15.png"))); // NOI18N
+        Excluir.setText("Excluir");
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
+            }
+        });
+
+        Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-salvar-como-15.png"))); // NOI18N
+        Salvar.setText("Salvar");
+        Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvarActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText(" ");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Excluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(Salvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Excluir)
+                .addGap(59, 59, 59))
+        );
 
         ConsultarVoo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -268,91 +308,208 @@ public class Vooo extends javax.swing.JFrame {
                 ConsultarVooMouseClicked(evt);
             }
         });
-        jScrollPane6.setViewportView(ConsultarVoo);
+        jScrollPane9.setViewportView(ConsultarVoo);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 915, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consultar Voos", jPanel5);
+        jTabbedPane1.addTab("Dados Voo", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1001, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(74, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 318, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane1)
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void ConsultarVooMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarVooMouseClicked
+id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
+        Origem.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),1).toString());
+        Destino.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),2).toString());
+        Status.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),3).toString());          // TODO add your handling code here:
+    }//GEN-LAST:event_ConsultarVooMouseClicked
+
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
-       Voo voo = new Voo();
-       try{
-           String texto = DataHoraPartida.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+        if(id.getText().equals("0")){
+            Voo voo = new Voo();
+            try{
+                String texto = DataHoraPartida.getText();
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date data = formato.parse(texto);
+                Timestamp timeStamp = new Timestamp(data.getTime());
+                voo.setDataHoraPartida(timeStamp);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
+            }
+            try{
+                String texto = DataHoraChegada.getText();
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date data = formato.parse(texto);
+                Timestamp timeStamp = new Timestamp(data.getTime());
+                voo.setDataHoraChegada(timeStamp);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
+            }
+
+            voo.setOrigem(Origem.getText());
+            voo.setDestino(Destino.getText());
+            voo.setStatus(Status.getText());
+
+            String selecionado = (String) AeronaveCombo.getSelectedItem();
+            int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
+
+            AeronaveController aeronaveController = new AeronaveController();
+            Aeronave aeronave = aeronaveController.findById(idAeronave);
+
+            voo.setAeronave((aeronave));
+
+            VooController vooController = new VooController();
+
+            vooController.create(voo);
+            limparDados();
+
+        }else{
+
+            Voo voo = new Voo();
+
+            try{
+                String texto = DataHoraPartida.getText();
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date data = formato.parse(texto);
+                Timestamp timeStamp = new Timestamp(data.getTime());
+                voo.setDataHoraPartida(timeStamp);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
+            }try{
+                String texto = DataHoraChegada.getText();
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date data = formato.parse(texto);
+                Timestamp timeStamp = new Timestamp(data.getTime());
+                voo.setDataHoraChegada(timeStamp);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
+            }
+
+            voo.setIdVoo(Integer.parseInt(Id.getText()));
+            voo.setOrigem(Origem.getText());
+            voo.setDestino(Destino.getText());
+            voo.setStatus(Status.getText());
+
+            String selecionado = (String) AeronaveCombo.getSelectedItem();
+            int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
+
+            AeronaveController aeronaveController = new AeronaveController();
+            Aeronave aeronave = aeronaveController.findById(idAeronave);
+
+            voo.setAeronave((aeronave));
+
+            VooController vooController = new VooController();
+
+            vooController.update(voo);
+            listarVoos();
+            limparDados();
+
+        }
+    }//GEN-LAST:event_SalvarActionPerformed
+
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+        Voo voo = new Voo();
+        try{
+            String texto = DataHoraPartida.getText();
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date data = formato.parse(texto);
             Timestamp timeStamp = new Timestamp(data.getTime());
             voo.setDataHoraPartida(timeStamp);
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
-        }
-        try{
-           String texto = DataHoraChegada.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
+        }try{
+            String texto = DataHoraChegada.getText();
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date data = formato.parse(texto);
             Timestamp timeStamp = new Timestamp(data.getTime());
             voo.setDataHoraChegada(timeStamp);
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
+            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");
         }
-       
-       voo.setOrigem(Origem.getText());
-       voo.setDestino(Destino.getText());
-       voo.setStatus(Status.getText());
-       
-       String selecionado = (String) AeronaveCombo.getSelectedItem();
-       int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
-       
-       AeronaveController aeronaveController = new AeronaveController();
-       Aeronave aeronave = aeronaveController.findById(idAeronave);
-       
-       voo.setAeronave((aeronave));
-       
-       VooController vooController = new VooController();
-       
-       vooController.create(voo);
-       limparDados();
-       listarVoos();
-      
-    }//GEN-LAST:event_SalvarActionPerformed
+
+        voo.setIdVoo(Integer.parseInt(Id.getText()));
+
+        voo.setOrigem(Origem.getText());
+        voo.setDestino(Destino.getText());
+        voo.setStatus(Status.getText());
+
+        String selecionado = (String) AeronaveCombo.getSelectedItem();
+        int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
+
+        AeronaveController aeronaveController = new AeronaveController();
+        Aeronave aeronave = aeronaveController.findById(idAeronave);
+
+        voo.setAeronave((aeronave));
+
+        VooController vooController = new VooController();
+        vooController.delete(voo);
+
+        listarVoos();
+        limparDados();
+
+        Excluir.setEnabled(false);
+    }//GEN-LAST:event_ExcluirActionPerformed
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void AeronaveComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AeronaveComboActionPerformed
+
+    }//GEN-LAST:event_AeronaveComboActionPerformed
 
     
     private void listarAeronaves(){
@@ -373,119 +530,6 @@ public class Vooo extends javax.swing.JFrame {
     }
     
     
-    private void Editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Editar1ActionPerformed
-       Voo voo = new Voo();
-       
-       
-       try{
-           String texto = DataHoraPartida.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date data = formato.parse(texto);
-            Timestamp timeStamp = new Timestamp(data.getTime());
-            voo.setDataHoraPartida(timeStamp);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
-        }try{
-           String texto = DataHoraChegada.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date data = formato.parse(texto);
-            Timestamp timeStamp = new Timestamp(data.getTime());
-            voo.setDataHoraChegada(timeStamp);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
-        }
-       
-       voo.setIdVoo(Integer.parseInt(Id.getText()));
-       voo.setOrigem(Origem.getText());
-       voo.setDestino(Destino.getText());
-       voo.setStatus(Status.getText());
-       
-       String selecionado = (String) AeronaveCombo.getSelectedItem();
-       int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
-       
-       AeronaveController aeronaveController = new AeronaveController();
-       Aeronave aeronave = aeronaveController.findById(idAeronave);
-       
-       voo.setAeronave((aeronave));
-       
-       VooController vooController = new VooController();
-       
-       vooController.update(voo);
-       listarVoos();
-       limparDados();
-       
-       
-       
-    }//GEN-LAST:event_Editar1ActionPerformed
-
-    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
-        Voo voo = new Voo();
-        try{
-           String texto = DataHoraPartida.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date data = formato.parse(texto);
-            Timestamp timeStamp = new Timestamp(data.getTime());
-            voo.setDataHoraPartida(timeStamp);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
-        }try{
-           String texto = DataHoraChegada.getText();
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date data = formato.parse(texto);
-            Timestamp timeStamp = new Timestamp(data.getTime());
-            voo.setDataHoraChegada(timeStamp);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Data e hora invalidas, use dd/MM/yyyy HH:mm:ss");  
-        }
-       
-        voo.setIdVoo(Integer.parseInt(Id.getText())); 
-     
-        voo.setOrigem(Origem.getText());
-        voo.setDestino(Destino.getText());
-        voo.setStatus(Status.getText());
-
-        String selecionado = (String) AeronaveCombo.getSelectedItem();
-       int idAeronave = Integer.parseInt(selecionado.split(" - ")[0]);
-       
-       AeronaveController aeronaveController = new AeronaveController();
-       Aeronave aeronave = aeronaveController.findById(idAeronave);
-       
-       voo.setAeronave((aeronave));
-       
-       VooController vooController = new VooController();
-       vooController.delete(voo);
-       
-       listarVoos();
-       limparDados();
-       
-       Excluir.setEnabled(false);
-      
-        
-    }//GEN-LAST:event_ExcluirActionPerformed
-
-    private void ConsultarVooMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarVooMouseClicked
-
-        jTabbedPane1.setSelectedIndex(0);
-        
-        Id.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),0).toString());
-        Origem.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),1).toString());
-        Destino.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),2).toString());
-        DataHoraPartida.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),3).toString());
-        DataHoraChegada.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),4).toString());
-        Status.setText(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),5).toString());
-        AeronaveCombo.setSelectedItem(ConsultarVoo.getValueAt(ConsultarVoo.getSelectedRow(),6).toString());
-        Excluir.setEnabled(true);
-
-    }//GEN-LAST:event_ConsultarVooMouseClicked
-
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
-
-    private void AeronaveComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AeronaveComboActionPerformed
-
-    }//GEN-LAST:event_AeronaveComboActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -527,28 +571,32 @@ public class Vooo extends javax.swing.JFrame {
     private javax.swing.JTextPane DataHoraChegada;
     private javax.swing.JTextPane DataHoraPartida;
     private javax.swing.JTextPane Destino;
-    private javax.swing.JButton Editar1;
     private javax.swing.JButton Excluir;
     private javax.swing.JTextPane Id;
     private javax.swing.JTextPane Origem;
     private javax.swing.JButton Salvar;
     private javax.swing.JTextPane Status;
+    private javax.swing.JLabel id;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lId;
     // End of variables declaration//GEN-END:variables
 
   
