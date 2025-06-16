@@ -28,6 +28,7 @@ public class PassageiroView extends javax.swing.JFrame {
         //imagem
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/icons8-passageiro-50.png"));
         jLabel10.setIcon(icon);
+        Excluir.setEnabled(false);
     }
     
     private void limpar(){
@@ -300,9 +301,11 @@ public class PassageiroView extends javax.swing.JFrame {
        PassageiroController passageiroController = new PassageiroController();
        passageiroController.delete(passageiro);
 
-       JOptionPane.showMessageDialog(null,"Passageiro excluida com sucesso!");
+       JOptionPane.showMessageDialog(null,"Passageiro excluido com sucesso!");
         
        limpar();
+       listar();
+       Excluir.setEnabled(false);
     }//GEN-LAST:event_ExcluirActionPerformed
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
@@ -356,7 +359,8 @@ public class PassageiroView extends javax.swing.JFrame {
  id.setText(ConsultarPassageiro.getValueAt(ConsultarPassageiro.getSelectedRow(),0).toString());
         nome.setText(ConsultarPassageiro.getValueAt(ConsultarPassageiro.getSelectedRow(),1).toString());
         cpf.setText(ConsultarPassageiro.getValueAt(ConsultarPassageiro.getSelectedRow(),2).toString());
-        contato.setText(ConsultarPassageiro.getValueAt(ConsultarPassageiro.getSelectedRow(),3).toString());        // TODO add your handling code here:
+        contato.setText(ConsultarPassageiro.getValueAt(ConsultarPassageiro.getSelectedRow(),3).toString()); 
+        Excluir.setEnabled(true);// TODO add your handling code here:
     }//GEN-LAST:event_ConsultarPassageiroMouseClicked
 
     

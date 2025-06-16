@@ -9,13 +9,27 @@ package view;
  *
  * @author Marden
  */
+
+import controller.VooController;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import model.Voo;
+import static view.Vooo.formatTimestamp;
+
 public class menu extends javax.swing.JFrame {
 
     /**
      * Creates new form menu
      */
+    
     public menu() {
         initComponents();
+        
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/icons8-avião-50.png"));
+        setIconImage(icon.getImage());
+        
+        listarVoos();
     }
 
     /**
@@ -27,136 +41,197 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jPanel2 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ConsultarVoo = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-
-        jMenu1.setText("jMenu1");
-
-        jMenu2.setText("jMenu2");
+        jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema do Aeroporto");
+        setResizable(false);
+        setSize(new java.awt.Dimension(480, 680));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
-        );
+        jScrollPane2.setBackground(new java.awt.Color(0, 0, 0, 1));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setName(""); // NOI18N
+        jScrollPane2.setOpaque(false);
+        jScrollPane2.getViewport().setOpaque(false);
 
-        jMenu3.setText("Cadastros");
+        ConsultarVoo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Origem", "Destino", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(ConsultarVoo);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 400, 300));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/aviao-ttt.png"))); // NOI18N
+        jLabel1.setText(" ");
+        jLabel1.setPreferredSize(new java.awt.Dimension(620, 480));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 410));
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Sistema do Aeroporto");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 26, 290, 30));
+
+        jMenu.setText("Menu");
+        jMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Menu(evt);
+            }
+        });
 
         jMenuItem1.setText("Aeronave");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                redirectToAeronave(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu.add(jMenuItem1);
 
         jMenuItem2.setText("Bagagem");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                redirectToBagagem(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jMenu.add(jMenuItem2);
 
-        jMenuItem3.setText("CheckIn");
+        jMenuItem3.setText("Check-In");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                redirectToCheckIn(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jMenu.add(jMenuItem3);
 
         jMenuItem4.setText("Passageiro");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                redirectToPassageiro(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        jMenu.add(jMenuItem4);
 
         jMenuItem5.setText("Passagem");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                redirectToPassagem(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        jMenu.add(jMenuItem5);
 
         jMenuItem6.setText("Voo");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                redirectToVoo(evt);
             }
         });
-        jMenu3.add(jMenuItem6);
+        jMenu.add(jMenuItem6);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar2.add(jMenu);
 
-        jMenu4.setText("Edit");
-        jMenuBar1.add(jMenu4);
+        jMenuSair.setText("Sair");
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Sair(evt);
+            }
+        });
+        jMenuBar2.add(jMenuSair);
 
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(317, 317, 317)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        setJMenuBar(jMenuBar2);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-         Aeronavee tela = new Aeronavee(); // instanciar a nova tela
-    tela.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void redirectToAeronave(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redirectToAeronave
+        Aeronavee aeronave = new Aeronavee(); // instanciar a nova tela
+        aeronave.setDefaultCloseOperation(Aeronavee.DISPOSE_ON_CLOSE);
+        aeronave.setVisible(true);
+        // this.dispose();
+    }//GEN-LAST:event_redirectToAeronave
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void redirectToBagagem(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redirectToBagagem
+        BagagemView bagagem = new BagagemView(); // instanciar a nova tela
+        bagagem.setDefaultCloseOperation(BagagemView.DISPOSE_ON_CLOSE);
+        bagagem.setVisible(true);
+    }//GEN-LAST:event_redirectToBagagem
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void Menu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu
+        
+    }//GEN-LAST:event_Menu
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        PassageiroView tela = new PassageiroView(); // instanciar a nova tela
-    tela.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void redirectToCheckIn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redirectToCheckIn
+        CheckInn checkin = new CheckInn(); // instanciar a nova tela
+        checkin.setDefaultCloseOperation(CheckInn.DISPOSE_ON_CLOSE);
+        checkin.setVisible(true);
+    }//GEN-LAST:event_redirectToCheckIn
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    private void redirectToPassageiro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redirectToPassageiro
+        PassageiroView passageiro = new PassageiroView(); // instanciar a nova tela
+        passageiro.setDefaultCloseOperation(PassageiroView.DISPOSE_ON_CLOSE);
+        passageiro.setVisible(true);
+    }//GEN-LAST:event_redirectToPassageiro
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    private void redirectToPassagem(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redirectToPassagem
+        PassagemView passagem = new PassagemView(); // instanciar a nova tela
+        passagem.setDefaultCloseOperation(PassagemView.DISPOSE_ON_CLOSE);
+        passagem.setVisible(true);
+    }//GEN-LAST:event_redirectToPassagem
+
+    private void redirectToVoo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redirectToVoo
+        Vooo voo = new Vooo(); // instanciar a nova tela
+        voo.setDefaultCloseOperation(Vooo.DISPOSE_ON_CLOSE);
+        voo.setVisible(true);
+    }//GEN-LAST:event_redirectToVoo
+
+    public void listarVoos(){
+        
+        VooController vooController = new VooController();
+        List<Voo> lista = vooController.read();
+        DefaultTableModel dados = (DefaultTableModel) ConsultarVoo.getModel();
+        dados.setNumRows(0);
+        
+        for(Voo voo : lista){
+        
+            dados.addRow(new Object[]{
+                voo.getOrigem(),
+                voo.getDestino(),
+                voo.getStatus(),
+        });
+    }
+}
+    
+    private void Sair(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sair
+        this.dispose();
+    }//GEN-LAST:event_Sair
 
     /**
      * @param args the command line arguments
@@ -194,17 +269,18 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JTable ConsultarVoo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenu jMenuSair;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
