@@ -385,6 +385,18 @@ public class PassagemView extends javax.swing.JFrame {
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
 
         
+        try{
+
+            if (assento.getText().trim().isEmpty() ||
+                    status.getText().trim().isEmpty() ||
+                    classe.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+                return;
+            }
+
+            
+        
         if(id.getText().equals("0")){
         Passagem passagem = new Passagem();
 
@@ -457,6 +469,10 @@ public class PassagemView extends javax.swing.JFrame {
         
         }
         
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Erro ao salvar:" + e);
+        }
         
 
     }//GEN-LAST:event_SalvarActionPerformed
