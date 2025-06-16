@@ -368,6 +368,22 @@ public class BagagemView extends javax.swing.JFrame {
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
 
         
+        try{
+
+            if (peso.getText().trim().isEmpty() ||
+                    destino.getText().trim().isEmpty() ||
+                    status.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+                return;
+            }
+
+            int capacidade = Integer.parseInt(peso.getText().trim());
+            if (capacidade <= 0) {
+                JOptionPane.showMessageDialog(null, "O peso deve ser um número maior que zero!");
+                return;
+            }
+        
         if(id.getText().equals("0")){
         Bagagem bagagem = new Bagagem();
         
@@ -434,6 +450,11 @@ public class BagagemView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Bagagem atualizado com sucesso!");
         
         }
+        }catch(NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(null,"O peso deve ser um número válido.");
+        }
+        
         
     }//GEN-LAST:event_SalvarActionPerformed
 
