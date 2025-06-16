@@ -12,6 +12,7 @@ import controller.PassageiroController;
 import controller.PassagemController;
 import controller.VooController;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Voo;
@@ -32,6 +33,9 @@ public class PassagemView extends javax.swing.JFrame {
         listar();
         listarPassageiro();
         listarVoo();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/icons8-bilhete-50.png"));
+        jLabel10.setIcon(icon);
+        Excluir.setEnabled(false);
     }
     
     private void limpar(){
@@ -103,6 +107,7 @@ public class PassagemView extends javax.swing.JFrame {
         this.status.setText(status);
         this.VooCombo.setSelectedItem(voo.getOrigem());
         this.PassageiroCombo.setSelectedItem(passageiro.getNome());
+        Excluir.setEnabled(true);
     }
 
     /**
@@ -368,10 +373,13 @@ public class PassagemView extends javax.swing.JFrame {
         
         PassagemController passagemController = new PassagemController();
         passagemController.delete(passagem);
+        
+       
 
         JOptionPane.showMessageDialog(null,"Passagem excluida com sucesso!");
         
        limpar();
+       Excluir.setEnabled(false); 
     }//GEN-LAST:event_ExcluirActionPerformed
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
@@ -421,6 +429,7 @@ public class PassagemView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Passagem salvo com sucesso!");
         
         limpar();
+        Excluir.setEnabled(false); 
         
         }else{
             
@@ -444,6 +453,7 @@ public class PassagemView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Passagem atualizado com sucesso!");
         
         limpar();
+        Excluir.setEnabled(false); 
         
         }
         
@@ -456,6 +466,7 @@ id.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),0).to
         assento.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),1).toString());
         classe.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),2).toString());
         status.setText(ConsultarPassagem.getValueAt(ConsultarPassagem.getSelectedRow(),3).toString());
+        Excluir.setEnabled(true); 
         // TODO add your handling code here:
     }//GEN-LAST:event_ConsultarPassagemMouseClicked
 
