@@ -309,6 +309,17 @@ public class PassageiroView extends javax.swing.JFrame {
     }//GEN-LAST:event_ExcluirActionPerformed
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
+        try{
+
+            if (nome.getText().trim().isEmpty() ||
+                    cpf.getText().trim().isEmpty() ||
+                    contato.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+                return;
+            }
+
+            
         if(id.getText().equals("0")){
         Passageiro passageiro = new Passageiro();
 
@@ -351,7 +362,13 @@ public class PassageiroView extends javax.swing.JFrame {
         
         }
         
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null,"Erro ao salvar: " + e);
+        }
         
+        
+
 
     }//GEN-LAST:event_SalvarActionPerformed
 
