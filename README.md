@@ -1,77 +1,77 @@
-CRIAR O BANCO NESSA ORDEM 
+Sistema de Gerenciamento de Aeroporto
+Este projeto é um sistema desktop desenvolvido em Java Swing para gerenciamento de operações em um aeroporto. Ele permite o controle de passageiros, voos, aeronaves, check-ins, bagagens e passagens, utilizando uma arquitetura baseada em MVC (Model-View-Controller).
 
-CREATE TABLE `aeronave` (
-   `IdAeronave` int NOT NULL AUTO_INCREMENT,
-   `Modelo` varchar(50) NOT NULL,
-   `Capacidade` int NOT NULL,
-   `Fabricante` varchar(50) NOT NULL,
-   PRIMARY KEY (`IdAeronave`)
- ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+Funcionalidades
+Cadastro e gerenciamento de Passageiros
 
+Registro e controle de Voos
 
+Gestão de Aeronaves
 
- CREATE TABLE `voo` (
-   `IdVoo` int NOT NULL AUTO_INCREMENT,
-   `Origem` varchar(50) NOT NULL,
-   `Destino` varchar(50) NOT NULL,
-   `DataHoraPartida` datetime NOT NULL,
-   `DataHoraChegada` datetime NOT NULL,
-   `Status` varchar(25) NOT NULL,
-   `AeronaveId` int NOT NULL,
-   PRIMARY KEY (`IdVoo`),
-   KEY `AeronaveId` (`AeronaveId`),
-   CONSTRAINT `voo_ibfk_1` FOREIGN KEY (`AeronaveId`) REFERENCES `aeronave` (`IdAeronave`)
- ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+Processos de Check-in e Bagagem
 
+Emissão e controle de Passagens
 
+Interface gráfica com Java Swing
 
+Integração com banco de dados via JDBC
 
-CREATE TABLE `passageiro` (
-   `IdPassageiro` int NOT NULL AUTO_INCREMENT,
-   `Nome` varchar(70) NOT NULL,
-   `CPFOUPassaport` varchar(40) NOT NULL,
-   `contato` varchar(20) NOT NULL,
-   PRIMARY KEY (`IdPassageiro`)
- ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+Tecnologias Utilizadas
+Java 8+
 
+Java Swing (interface gráfica)
 
+JDBC (acesso a banco de dados)
 
-CREATE TABLE `passagem` (
-   `IdPassagem` int NOT NULL AUTO_INCREMENT,
-   `Assento` varchar(15) NOT NULL,
-   `Classe` varchar(15) NOT NULL,
-   `StatusPgto` varchar(20) NOT NULL,
-   `VooId` int NOT NULL,
-   `IdPassageiro` int NOT NULL,
-   PRIMARY KEY (`IdPassagem`),
-   KEY `VooId` (`VooId`),
-   KEY `IdPassageiro` (`IdPassageiro`),
-   CONSTRAINT `passagem_ibfk_1` FOREIGN KEY (`VooId`) REFERENCES `voo` (`IdVoo`),
-   CONSTRAINT `passagem_ibfk_2` FOREIGN KEY (`IdPassageiro`) REFERENCES `passageiro` (`IdPassageiro`)
- ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+Ant (via build.xml)
 
+IDE recomendada: IntelliJ IDEA ou NetBeans
 
+Estrutura do Projeto
+bash
+Copiar
+Editar
+SistemaAeroporto/
+├── src/
+│   ├── model/         # Entidades do sistema (POJOs)
+│   ├── controller/    # Lógica de controle (MVC)
+│   └── view/          # Interfaces Swing (não exibido aqui, mas presumido)
+├── db.properties      # Configuração do banco de dados
+├── build.xml          # Script de build (Ant)
+└── manifest.mf        # Manifesto para criação de JAR executável
+Como Executar
+Clone o repositório:
 
-CREATE TABLE `checkin` (
-   `IdCheckIn` int NOT NULL AUTO_INCREMENT,
-   `qtdDespachadaBgm` int NOT NULL,
-   `DataHora` datetime NOT NULL,
-   `IdPassagem` int NOT NULL,
-   PRIMARY KEY (`IdCheckIn`),
-   KEY `IdPassagem` (`IdPassagem`),
-   CONSTRAINT `checkin_ibfk_1` FOREIGN KEY (`IdPassagem`) REFERENCES `passagem` (`IdPassagem`)
- ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+bash
+Copiar
+Editar
+git clone https://github.com/Ruivoooo/SistemaAeroporto.git
+cd SistemaAeroporto
+Abra o projeto em sua IDE (IntelliJ ou NetBeans)
 
+Configure o banco de dados
 
+Edite o arquivo db.properties com os dados corretos de conexão
 
+Compile e execute
 
-CREATE TABLE `bagagem` (
-   `IdBagagem` int NOT NULL AUTO_INCREMENT,
-   `PesoKg` double(8,2) DEFAULT NULL,
-   `DestinoFinal` varchar(50) DEFAULT NULL,
-   `Status` varchar(20) DEFAULT NULL,
-   `IdCheckIn` int NOT NULL,
-   PRIMARY KEY (`IdBagagem`),
-   KEY `IdCheckIn` (`IdCheckIn`),
-   CONSTRAINT `bagagem_ibfk_1` FOREIGN KEY (`IdCheckIn`) REFERENCES `checkin` (`IdCheckIn`)
- ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+Via IDE: Execute a classe principal (Main, por exemplo)
+
+Via terminal (se configurado):
+
+bash
+Copiar
+Editar
+ant run
+Banco de Dados
+O sistema utiliza um banco relacional.
+
+As credenciais e URL estão no arquivo db.properties.
+
+Requisitos
+Java JDK 8 ou superior
+
+Ant (opcional, para build via terminal)
+
+Banco de dados compatível com JDBC (ex: MySQL, PostgreSQL)
+
